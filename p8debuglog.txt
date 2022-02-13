@@ -1,0 +1,104 @@
+ gcc -g p8final.c
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0xaf9: file p8final.c, line 71.
+(gdb) r
+Starting program: /home/runner/IA2-Test1-Session2/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p8final.c:71
+71  {
+(gdb) n
+72    int count = input_n();
+(gdb) s
+input_n () at p8final.c:9
+9   {
+(gdb) n
+11    printf("How many triangles will you enter:\n");
+(gdb) n
+How many triangles will you enter:
+12    scanf("%d", &n);
+(gdb) n
+3
+13    return n;
+(gdb) n
+14  }
+(gdb) n
+main () at p8final.c:73
+73    Triangle tris[count];
+(gdb) s
+74    input_n_triangles(count, tris);
+(gdb) s
+input_n_triangles (n=3, 
+    t=0x7fffed7a8610) at p8final.c:27
+27    for (int i = 0; i < n; i++)
+(gdb) n
+29      t[i] = input_triangle();
+(gdb) s
+input_triangle () at p8final.c:17
+17  {
+(gdb) n
+19    printf("Enter the base, altitude of a triangle:\n")
+(gdb) n
+Enter the base, altitude of a triangle:
+21    scanf("%f%f", &ABC.base, &ABC.altitude);
+(gdb) n
+6 7
+22    return ABC;
+(gdb) n
+23  }
+(gdb) n
+input_n_triangles (n=3, 
+    t=0x7fffed7a8610) at p8final.c:27
+27    for (int i = 0; i < n; i++)
+(gdb) n
+29      t[i] = input_triangle();
+(gdb) n
+Enter the base, altitude of a triangle:
+n
+27    for (int i = 0; i < n; i++)
+(gdb) n
+29      t[i] = input_triangle();
+(gdb) n
+Enter the base, altitude of a triangle:
+n
+27    for (int i = 0; i < n; i++)
+(gdb) n
+31  }
+(gdb) n
+main () at p8final.c:75
+75    find_areas(count, tris);
+(gdb) n
+76    Triangle small = find_smallest_triangle(count, tris);
+(gdb) n
+77    output(count, tris, small);
+(gdb) n
+6.000000, 7.000000 and
+6.000000, 7.000000 and
+6.000000, 7.000000
+is
+triangle with base = 6.000000 and altitude = 7.000000 having area = 21.000000
+78    return 0;
+(gdb) n
+79  }
+(gdb) q
+A debugging session is active.
+
+    Inferior 1 [process 816] will be killed.
+
+Quit anyway? (y or n) y
